@@ -7,8 +7,8 @@ yum update || apt update
 yum install wget nginx -y || apt install wget nginx -y
 fi
 spip=$(curl -s ifconfig.me)
-spport="443"
-s=$(echo $(($(cat /usr/local/x-ui/bin/config.json | grep -o "port.*" | grep -n "443" | cut -c 1)-1)))
+spport="80"
+s=$(echo $(($(cat /usr/local/x-ui/bin/config.json | grep -o "port.*" | grep -n "80" | cut -c 1)-1)))
 id=$(cat /usr/local/x-ui/bin/config.json | grep -o '"id".*' | sed -n "$s"p | cut -d '"' -f4)
 fakeid=$(echo $RANDOM | md5sum | cut -c 1-22)
 md5="3d99ff138e1f41e931e58617e7d128e2"
@@ -19,11 +19,11 @@ port=$(echo $host | cut -d ":" -f2)
 path=$(echo $url | grep -o "/if5ax.*")
 enpath=$(echo $path | sed 's/=/\\u003d/g' | sed 's/&/\\u0026/g')
 config=$(echo -n "{\"add\":\"$host\",\"aid\":\"0\",\"host\":\"$host\",\"id\":\"$id\",\"net\":\"ws\",\"path\":\"$enpath\",\"port\":\"809\",\"ps\":\"联通809免流\",\"scy\":\"auto\",\"sni\":\"\",\"tls\":\"\",\"type\":\"\",\"v\":\"2\"}" | base64 -w 0)
-echo -n "vmess://$config" | base64 -w 0 > /www/wwwroot/wdnmdmlvps.xyz/share/nginx/html/809
+echo -n "vmess://$config" | base64 -w 0 > //www/wwwroot/wdnmdmlvps.xyz/share/nginx/html/809
 [ $(ps -A | grep "nginx" | wc -l) -lt 1 ] && nginx
 if [ $(crontab -l | grep "lt809ml/sub" | wc -l) -lt 1 ]
 then crontab -l > crontablist
-echo "0 0-23/3 * * * bash <(curl -s https://raw.githubusercontent.com/q52694941/lt/main/sub)" >> crontablist
+echo "0 0-23/3 * * * bash <(curl -s bash <(curl -s https://raw.githubusercontent.com/q52694941/lt/main/sub)b)" >> crontablist
 crontab crontablist
 rm -rf crontablist
 fi
